@@ -19,8 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Aishwariya Jayakumar - Portfolio",
-  description: "Ultra-modern developer portfolio of Aishwariya Jayakumar, AI & Data Science Undergraduate.",
+  title: "Aishwariya J - Portfolio",
+  description: "Portfolio of Aishwariya J - B.Tech AI & Data Science Undergraduate at Sri Eshwar College of Engineering.",
 };
 
 export default function RootLayout({

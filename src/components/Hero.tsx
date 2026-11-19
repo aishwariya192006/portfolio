@@ -2,24 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import AIBrain from "./AIBrain";
+import { FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { HiMail } from "react-icons/hi";
 
 const roles = [
-  "AI Engineer",
-  "Data Scientist",
+  "AI & GenAI",
+  "Data Engineering",
   "Full Stack Developer",
-  "Hackathon Finalist",
-  "Cloud Learner",
-  "Problem Solver",
+  "National Finalist (TechCircuit)",
+  "Competitive Programmer",
 ];
 
 const highlights = [
-  { value: "100+", label: "LeetCode Problems" },
-  { value: "100+", label: "CodeChef Problems" },
-  { value: "1000+", label: "Skillrack Problems" },
-  { value: "3", label: "Certifications" },
+  { value: "300+", label: "LeetCode", sub: "Rank 5,44,710" },
+  { value: "180+", label: "CodeChef", sub: "Problems Solved" },
+  { value: "1000+", label: "Skillrack", sub: "Rank 21,349" },
+  { value: "5", label: "Skillrack", sub: "Certificates" },
 ];
 
 export default function Hero() {
@@ -48,11 +46,11 @@ export default function Hero() {
         >
           <div className="space-y-2">
             <h2 className="text-xl md:text-2xl font-medium text-orange-200/80 font-sans tracking-wide">
-              Hello, I'm
+              Hello, I&apos;m
             </h2>
             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-semibold text-white leading-[1.1] tracking-tight">
               Aishwariya <br />
-              Jayakumar
+              J.
             </h1>
           </div>
 
@@ -71,15 +69,62 @@ export default function Hero() {
           </div>
           
           <p className="text-gray-300 max-w-lg text-lg leading-relaxed font-sans pt-2">
-            Building intelligent systems with a focus on real-world impact and thoughtful design. Third-year AI & Data Science student.
+            B.Tech AI &amp; Data Science student at Sri Eshwar College of Engineering. Building data pipelines, Generative AI applications, and modern web systems.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-2">
             <a href="#projects" className="px-8 py-3 bg-[#F4F0EB] text-[#2A1E14] font-semibold rounded-xl hover:bg-white transition-colors shadow-sm">
               View projects
             </a>
             <a href="#contact" className="px-8 py-3 bg-transparent border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-colors">
-              Let's connect
+              Let&apos;s connect
+            </a>
+          </div>
+
+          {/* Highlights Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 w-full max-w-lg">
+            {highlights.map((h, i) => (
+              <div key={i} className="px-3 py-2.5 rounded-xl bg-white/5 border border-white/5">
+                <div className="text-lg font-bold font-display text-accent-cyan">{h.value}</div>
+                <div className="text-xs text-white font-medium">{h.label}</div>
+                <div className="text-[10px] text-gray-400 truncate">{h.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Quick Contact Links */}
+          <div className="flex items-center gap-4 pt-1 text-gray-400">
+            <a
+              href="mailto:aishwariya.j2024aids@sece.ac.in"
+              title="Email: aishwariya.j2024aids@sece.ac.in"
+              className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <HiMail size={20} />
+            </a>
+            <a
+              href="tel:+919566585325"
+              title="Phone: +91 9566585325"
+              className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <FaPhoneAlt size={16} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+              className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <FaLinkedin size={20} />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 hover:text-white transition-colors"
+            >
+              <FaGithub size={20} />
             </a>
           </div>
         </motion.div>
@@ -91,7 +136,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 3.8 }}
           className="relative h-[400px] lg:h-[500px] w-full flex items-center justify-end rounded-2xl overflow-visible interactive mt-12 lg:mt-0"
         >
-          {/* Background shapes mimicking the screenshot graphic */}
+          {/* Background shapes mimicking the graphic */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-[#4A3224]/80 rounded-full blur-[2px] pointer-events-none border border-[#5a3e2d]/50" />
           <div className="absolute right-8 top-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#D47E3D] rounded-3xl rotate-12 blur-[1px] pointer-events-none shadow-2xl" />
 
@@ -100,17 +145,22 @@ export default function Hero() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 4.2 }}
-            className="absolute left-0 bottom-4 md:-bottom-12 lg:-left-12 lg:bottom-12 w-72 bg-[#2D2119] border border-white/10 rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20"
+            className="absolute left-0 bottom-4 md:-bottom-12 lg:-left-12 lg:bottom-12 w-80 bg-[#2D2119] border border-white/10 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20"
           >
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <h3 className="text-4xl font-display font-bold text-[#F4F0EB]">4+</h3>
-                <p className="text-gray-400 text-sm mt-1">Projects</p>
+                <h3 className="text-3xl font-display font-bold text-[#F4F0EB]">3</h3>
+                <p className="text-gray-400 text-sm mt-0.5">Featured Projects (2025 - 2026)</p>
               </div>
-              <div className="w-8 h-[1px] bg-white/10" />
+              <div className="w-full h-[1px] bg-white/10" />
               <div>
-                <h3 className="text-3xl font-display font-bold text-[#D47E3D]">Top 100</h3>
-                <p className="text-gray-400 text-sm mt-1">AI for social impact</p>
+                <h3 className="text-2xl font-display font-bold text-[#D47E3D]">Top 20 Finalist</h3>
+                <p className="text-gray-400 text-xs mt-0.5">AI for Social Impact Challenge 2026 (HCL &amp; StartupTN)</p>
+              </div>
+              <div className="w-full h-[1px] bg-white/10" />
+              <div>
+                <h3 className="text-xl font-display font-bold text-[#00E5FF]">6th Rank National Finalist</h3>
+                <p className="text-gray-400 text-xs mt-0.5">TechCircuit National (among 1,006 teams)</p>
               </div>
             </div>
           </motion.div>

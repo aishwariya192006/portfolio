@@ -1,8 +1,58 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaPhoneAlt } from "react-icons/fa";
 import { HiAtSymbol } from "react-icons/hi";
-import { ArrowDown } from "lucide-react";
+import { Globe } from "lucide-react";
+
+const contactLinks = [
+  {
+    name: "Phone",
+    value: "+91 9566585325",
+    href: "tel:+919566585325",
+    icon: FaPhoneAlt,
+    iconBg: "bg-[#4A2E1E]",
+    iconColor: "text-[#D47E3D]",
+    rotate: -3,
+  },
+  {
+    name: "Email",
+    value: "aishwariya.j2024aids@sece.ac.in",
+    href: "mailto:aishwariya.j2024aids@sece.ac.in",
+    icon: HiAtSymbol,
+    iconBg: "bg-[#3B2A45]",
+    iconColor: "text-[#8B5CF6]",
+    rotate: -1,
+  },
+  {
+    name: "LinkedIn",
+    value: "Connect on LinkedIn",
+    href: "https://linkedin.com",
+    icon: FaLinkedinIn,
+    iconBg: "bg-[#1E3048]",
+    iconColor: "text-[#00E5FF]",
+    rotate: 1,
+    external: true,
+  },
+  {
+    name: "GitHub",
+    value: "Explore Code",
+    href: "https://github.com",
+    icon: FaGithub,
+    iconBg: "bg-[#1A332B]",
+    iconColor: "text-[#10B981]",
+    rotate: 3,
+    external: true,
+  },
+  {
+    name: "Portfolio",
+    value: "aishwariya-portfolio",
+    href: "#home",
+    icon: Globe,
+    iconBg: "bg-[#3D2C20]",
+    iconColor: "text-orange-400",
+    rotate: 0,
+  },
+];
 
 export default function Contact() {
   return (
@@ -19,70 +69,47 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-14"
         >
           <span className="text-[#00E5FF] font-semibold tracking-widest text-sm uppercase mb-4 block">
             Get In Touch
           </span>
-          <h2 className="text-5xl md:text-6xl font-bold font-display mb-6 tracking-tight text-white">
-            Let's build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D47E3D] via-[#8B5CF6] to-[#00E5FF]">intelligent</span> solutions
+          <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 tracking-tight text-white">
+            Let&apos;s build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D47E3D] via-[#8B5CF6] to-[#00E5FF]">intelligent</span> solutions
           </h2>
           <p className="text-[#D47E3D] text-lg md:text-xl font-medium">
-            Open for new opportunities. Pick your preferred way to connect.
+            Open for new opportunities, research collaborations, and internships.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-6 mt-8">
-          
-          {/* Email Card */}
-          <motion.a
-            href="mailto:email@example.com"
-            initial={{ opacity: 0, y: 30, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -4 }}
-            whileHover={{ scale: 1.05, rotate: 0 }}
-            viewport={{ once: true }}
-            className="w-40 h-48 bg-[#21160F] border border-white/5 rounded-3xl flex flex-col items-center justify-center gap-4 shadow-xl cursor-pointer"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-[#4A3224] flex items-center justify-center text-[#D47E3D]">
-              <HiAtSymbol size={28} />
-            </div>
-            <span className="text-white font-semibold">Email</span>
-          </motion.a>
-
-          {/* LinkedIn Card */}
-          <motion.a
-            href="https://linkedin.com"
-            target="_blank"
-            initial={{ opacity: 0, y: 30, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -1 }}
-            whileHover={{ scale: 1.05, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="w-40 h-48 bg-[#21160F] border border-white/5 rounded-3xl flex flex-col items-center justify-center gap-4 shadow-xl cursor-pointer"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-[#3B2A45] flex items-center justify-center text-[#8B5CF6]">
-              <FaLinkedinIn size={28} />
-            </div>
-            <span className="text-white font-semibold">LinkedIn</span>
-          </motion.a>
-
-          {/* GitHub Card */}
-          <motion.a
-            href="https://github.com"
-            target="_blank"
-            initial={{ opacity: 0, y: 30, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0, rotate: 2 }}
-            whileHover={{ scale: 1.05, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="w-40 h-48 bg-[#21160F] border border-white/5 rounded-3xl flex flex-col items-center justify-center gap-4 shadow-xl cursor-pointer"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-[#1A332B] flex items-center justify-center text-[#10B981]">
-              <span className="font-bold text-xl">gh</span>
-            </div>
-            <span className="text-white font-semibold">GitHub</span>
-          </motion.a>
-
+        <div className="flex flex-wrap justify-center gap-6 mt-4 max-w-4xl">
+          {contactLinks.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                initial={{ opacity: 0, y: 30, rotate: 0 }}
+                whileInView={{ opacity: 1, y: 0, rotate: item.rotate }}
+                whileHover={{ scale: 1.05, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08 }}
+                className="w-48 p-6 bg-[#21160F] border border-white/5 hover:border-white/20 rounded-3xl flex flex-col items-center justify-center gap-3 shadow-xl cursor-pointer group transition-all"
+              >
+                <div className={`w-14 h-14 rounded-2xl ${item.iconBg} flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-transform`}>
+                  <Icon size={24} />
+                </div>
+                <div className="text-center">
+                  <span className="text-white font-semibold block text-base">{item.name}</span>
+                  <span className="text-gray-400 text-xs mt-1 block truncate max-w-[150px]" title={item.value}>
+                    {item.value}
+                  </span>
+                </div>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </section>
